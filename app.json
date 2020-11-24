@@ -1,0 +1,18 @@
+{
+    "id": "1f7fa5ca-ee75-419d-9e82-8f2e33a2fe99",
+    "version": "0.0.1",
+    "requiredApiVersion": "^1.19.0",
+    "iconFile": "icon.png",
+    "author": {
+        "name": "Ilhasoft",
+        "homepage": "https://github.com/Ilhasoft/",
+        "support": "https://github.com/Ilhasoft/"
+    },
+    "name": "PushContactHistory",
+    "nameSlug": "pushcontacthistory",
+    "classFile": "PushContactHistoryApp.ts",
+    "description": "Get the visitor message history from the Push application",
+    "implements": [
+        "IPostLivechatRoomStarted"
+    ]
+}
