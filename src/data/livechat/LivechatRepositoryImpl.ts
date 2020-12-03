@@ -20,11 +20,13 @@ export default class LiveChatRepositoryImpl implements ILivechatRepository {
     private buildChatbotHistoryMessage(messages: Array<RPMessage>): string {
         let messageText = '**Chatbot History**';
 
-        for (let i = messages.length - 1; i >= 0; i--) {
-            messageText += messages[i].direction === Direction.IN
-                ? `\n> :bust_in_silhouette: [${messages[i].sentOn}]: \`${messages[i].text}\``
-                : `\n> :robot: [${messages[i].sentOn}]: ${messages[i].text}`;
-        }
+        messages.slice().reverse()
+            .map((message, index) => {
+                messageText += message.direction === Direction.IN
+                ? `\n> :bust_in_silhouette: [${message.sentOn}]: \`${message.text}\``
+                : `\n> :robot: [${message.sentOn}]: ${message.text}`;
+            });
+
         return messageText;
     }
 

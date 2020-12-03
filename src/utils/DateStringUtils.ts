@@ -34,7 +34,7 @@ export default class DateStringUtils {
         return pattern;
     }
 
-    public static formatPart(pattern: string, key: string, value: number) {
+    public static formatPart(pattern: string, key: string, value: number): string {
         return pattern.replace(new RegExp(`\\b${key}\\b`), value <= 9 && key.length === 2 ? `0${value}` : `${value}`);
     }
 
