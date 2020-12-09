@@ -32,7 +32,10 @@ export default class RapidProRestApi implements IRapidProRemoteDataSource {
             if (message.status !== 'errored') {
                 const sentOn = DateStringUtils.format(DateStringUtils.addMinutes(message.sent_on, tzOffset), 'dd/MM/yyyy, hh:mm');
 
-                result.push({ direction: message.direction, sentOn, text: message.text } as RPMessage);
+                message.text && result.push({ direction: message.direction, sentOn, text: message.text } as RPMessage);
+                message.attachments.forEach((attachment) => {
+                    result.push({ direction: message.direction, sentOn, text: attachment.url } as RPMessage);
+                });
             }
         });
 
@@ -45,7 +48,6 @@ export default class RapidProRestApi implements IRapidProRemoteDataSource {
                 'Content-Type': 'application/json',
                 'Authorization': `Token ${this.authToken}`,
             },
-            // TODO: check timeout parameter
             timeout: this.timeout * 1000,
         };
     }
