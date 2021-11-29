@@ -12,7 +12,5 @@
     "nameSlug": "pushcontacthistory",
     "classFile": "PushContactHistoryApp.ts",
     "description": "Get the visitor message history from the Push application",
-    "implements": [
-        "IPostLivechatRoomStarted"
-    ]
+    "implements": ["IPostLivechatRoomStarted"]
 }
