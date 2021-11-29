@@ -6,6 +6,7 @@ export const CONFIG_RAPIDPRO_AUTH_TOKEN = 'config_rapidpro_auth_token';
 export const CONFIG_RAPIDPRO_URL = 'config_rapidpro_url';
 export const CONFIG_REQUEST_TIMEOUT = 'config_request_timeout';
 export const CONFIG_HISTORY_TIME = 'condif_history_time';
+export const CONFIG_DEFAULT_TIMEZONE = 'config_default_timezone';
 
 export const APP_SETTINGS: Array<ISetting> = [
     {
@@ -39,5 +40,13 @@ export const APP_SETTINGS: Array<ISetting> = [
         required: true,
         public: false,
         i18nLabel: CONFIG_REQUEST_TIMEOUT,
+    },
+    {
+        id: CONFIG_DEFAULT_TIMEZONE,
+        type: SettingType.NUMBER,
+        packageValue: -3,
+        required: false,
+        public: false,
+        i18nLabel: CONFIG_DEFAULT_TIMEZONE,
     },
 ];

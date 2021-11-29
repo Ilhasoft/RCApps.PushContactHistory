@@ -17,6 +17,7 @@ import LiveChatAppsEngine from './src/local/livechat/LivechatAppsEngine';
 import RapidProRestApi from './src/remote/rapidpro/RapidproRestApi';
 import {
     APP_SETTINGS,
+    CONFIG_DEFAULT_TIMEZONE,
     CONFIG_HISTORY_TIME,
     CONFIG_RAPIDPRO_AUTH_TOKEN,
     CONFIG_RAPIDPRO_URL,
@@ -38,6 +39,7 @@ export class PushContactHistoryApp extends App implements IPostLivechatRoomStart
                     const rpAuthToken = await read.getEnvironmentReader().getSettings().getValueById(CONFIG_RAPIDPRO_AUTH_TOKEN);
                     const reqTimeout = await read.getEnvironmentReader().getSettings().getValueById(CONFIG_REQUEST_TIMEOUT);
                     const historyTime = await read.getEnvironmentReader().getSettings().getValueById(CONFIG_HISTORY_TIME);
+                    const defaultTimezone = await read.getEnvironmentReader().getSettings().getValueById(CONFIG_DEFAULT_TIMEZONE);
 
                     const after = new Date();
                     after.setHours(after.getHours() - historyTime);
@@ -51,6 +53,7 @@ export class PushContactHistoryApp extends App implements IPostLivechatRoomStart
                     const messages = await rapidProDataSource.getHistory(
                         job.token,
                         after.toISOString(),
+                        defaultTimezone,
                     );
 
                     const livechatRepo = new LiveChatRepositoryImpl(
